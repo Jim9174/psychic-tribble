@@ -1,0 +1,1014 @@
+<!DOCTYPE html>
+<HTML>
+
+<body onload = "fturn();">
+
+
+
+
+
+
+<h1 id = "head">My First Game</h1>
+
+<p></p>
+
+ <div class="grid-container">
+  <div class="grid-item" id = "A5" onclick = "gridclicked(this.id);"></div>
+  <div class="grid-item" id = "B5" onclick = "gridclicked(this.id);"></div>
+  <div class="grid-item" id = "C5" onclick = "gridclicked(this.id);"></div>
+  <div class="grid-item" id = "D5" onclick = "gridclicked(this.id);"></div>
+  <div class="grid-item" id = "E5" onclick = "gridclicked(this.id);"></div>
+  <div class="grid-item" id = "A4" onclick = "gridclicked(this.id);"></div>
+  <div class="grid-item" id = "B4" onclick = "gridclicked(this.id);"></div>
+  <div class="grid-item" id = "C4" onclick = "gridclicked(this.id);"></div>
+  <div class="grid-item" id = "D4" onclick = "gridclicked(this.id);"></div>
+  <div class="grid-item" id = "E4" onclick = "gridclicked(this.id);"></div>
+  <div class="grid-item" id = "A3" onclick = "gridclicked(this.id);"></div>
+  <div class="grid-item" id = "B3" onclick = "gridclicked(this.id);"></div>
+  <div class="grid-item" id = "C3" onclick = "gridclicked(this.id);"></div>
+  <div class="grid-item" id = "D3" onclick = "gridclicked(this.id);"></div>
+  <div class="grid-item" id = "E3" onclick = "gridclicked(this.id);"></div>
+  <div class="grid-item" id = "A2" onclick = "gridclicked(this.id);"></div>
+  <div class="grid-item" id = "B2" onclick = "gridclicked(this.id);"></div>
+  <div class="grid-item" id = "C2" onclick = "gridclicked(this.id);"></div>
+  <div class="grid-item" id = "D2" onclick = "gridclicked(this.id);"></div>
+  <div class="grid-item" id = "E2" onclick = "gridclicked(this.id);"></div>
+  <div class="grid-item" id = "A1" onclick = "gridclicked(this.id);"></div>
+  <div class="grid-item" id = "B1" onclick = "gridclicked(this.id);"></div>
+  <div class="grid-item" onclick = "gridclicked(this.id);" id = "C1"></div>
+  <div class="grid-item" id = "D1" onclick = "gridclicked(this.id);"></div>
+  <div class="grid-item" id = "E1" onclick = "gridclicked(this.id);"></div>
+</div> 
+<p id = "select">
+Please select a Creature:
+</p>
+<button type = "button" id = "move1" class = "xer" onclick = "moveclicked(this.id);"></button>
+
+
+
+<button type = "button" id = "move2" class = "xer" onclick = "moveclicked(this.id);"></button>
+
+
+
+<button type = "button" id = "move3" class = "xer" onclick = "moveclicked(this.id);"></button>
+
+
+
+<button type = "button" id = "move4" class = "xer" onclick = "moveclicked(this.id);"></button>
+
+
+
+<button type = "button" id = "move5" class = "xer" onclick = "moveclicked(this.id);"></button>
+
+<p id = 'display1'>
+
+</p>
+
+<p id = 'display2'>
+
+</p>
+
+<p id = 'display3'>
+
+</p>
+
+<p id = 'display4'>
+
+</p>
+
+<p id = 'display5'>
+
+</p>
+
+<p>
+Just a buffer so that we can scroll down
+</p>
+
+
+<!-- The core Firebase JS SDK is always required and must be listed first -->
+<script src="https://www.gstatic.com/firebasejs/7.24.0/firebase-app.js"></script>
+
+<!-- TODO: Add SDKs for Firebase products that you want to use
+     https://firebase.google.com/docs/web/setup#available-libraries -->
+     
+<script src="https://www.gstatic.com/firebasejs/7.24.0/firebase-auth.js"></script>
+     
+<script src="https://www.gstatic.com/firebasejs/7.24.0/firebase-database.js"></script>
+
+
+<script>
+  // Your web app's Firebase configuration
+  // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+  var firebaseConfig = {
+    apiKey: "AIzaSyAoh_WXyevTId6_ndy65_J2-eQnnnCX7-Q",
+    authDomain: "unamed-jody-project.firebaseapp.com",
+    databaseURL: "https://unamed-jody-project.firebaseio.com",
+    projectId: "unamed-jody-project",
+    storageBucket: "unamed-jody-project.appspot.com",
+    messagingSenderId: "293495715689",
+    appId: "1:293495715689:web:8acb43cec99831a121aff8",
+    measurementId: "G-1F7SQ49DVC"
+  };
+  // Initialize Firebase
+  firebase.initializeApp(firebaseConfig);
+  //firebase.analytics();
+  
+  const dbRef = firebase.database().ref();
+  const mov = dbRef.child('Moves');
+  const tra = dbRef.child('Traits');
+  const cre = dbRef.child('Creatures');
+  var curcre = cre.child('Bloba');
+  
+  mov.on("value", function(data) 
+  {
+   					var np = data.val();
+   					console.log("Anchor: " + np.Anchor);
+            //console.log(mov);
+           
+	 });
+  
+</script>
+
+
+</body>
+
+</HTML>
+
+<script>
+
+var board = -1;
+var butto = 0;
+var party = ['Bloba', '-', '-', '-', '-'];
+var oparty = ['Packun', '-', '-', '-', '-'];
+var moves = ['Anchor', 'Slap', 'Move', '-', '-'];
+var omoves = ['Bite', 'Poison Smoke', '-', '-', '-'];
+var selected = 'Something went wrong!'
+var tcord = 'C1';
+var otcord = 'C5';
+var pieces = ['-', '-', '-', '-', '-'];
+var piecescount = 0;
+var opieces = ['-', '-', '-', '-', '-'];
+var opiecescount = 0;
+var tileselected = '';
+var prevtileselected = '';
+var health = ['500', '-', '-', '-', '-'];
+var ohealth = ['125', '-', '-', '-', '-'];
+var platurn = false;
+var h = '';
+var t = '';
+var cheer = '';
+var playerName = 'Jim9174';
+
+
+
+
+
+function moveclicked(thiss)
+{
+	if(butto == 0) // This is for when the player is still placing pieces.
+  {
+  	selected = document.getElementById(thiss).innerHTML
+    
+    document.getElementById('head').innerHTML = 
+    'Where would you like to place ' + selected + '?';
+  	
+  	document.getElementById('A1').style.background = 
+    'orange';
+    document.getElementById('B1').style.background = 
+    'orange';
+    document.getElementById('D1').style.background = 
+    'orange';
+    document.getElementById('E1').style.background = 
+    'orange';
+    document.getElementById('A2').style.background = 
+    'orange';
+    document.getElementById('B2').style.background = 
+    'orange';
+    document.getElementById('C2').style.background = 
+    'orange';
+    document.getElementById('D2').style.background = 
+    'orange';
+    document.getElementById('E2').style.background = 
+    'orange';
+    
+    board = 0;
+    butto = -1
+  }
+  else if(butto == 1) // For when the player is selecting a move
+  {
+  	document.getElementById(tileselected).style.background = '#b3b3b3';
+  	var temp = document.getElementById(thiss).innerHTML;
+    temp = removespaces(temp); // must remove spaces also.
+    //console.log("The original cord that is sent is " + thiss);
+    movetofunction(temp, tileselected);
+    
+  }
+  
+  else if (butto == -1)
+  {
+  	console.log("You should not be clicking a button rn!");
+  }
+ 
+}
+
+function gridclicked(thiss)
+{
+	prevtileselected = tileselected;
+	tileselected = thiss;
+  var check = calcgridV(thiss, '-', 2);
+  //console.log("This is the value of check: " + check);
+	if(board == 0) // For when you are placing pieces.
+  {
+  	plapieces(thiss, check);
+  }
+  else if(board == 1) // For when a piece needs to be selected
+  {
+  	selpiece(thiss);
+  }
+  
+  else if(board == 2) // For when a piece has been selected.
+  {
+  	display(document.getElementById(thiss).innerHTML);
+  }
+	
+  else if(board == 3) // For when a creature has used bite.
+  {
+  	
+  }
+  
+  else if(board == 4) //For when a creature has used slap.
+  {
+  	boardslap(thiss);
+  }
+  else if (board == -1)
+  {
+  	console.log("You should not be clicking the grid rn!");
+  }
+  
+  
+}
+
+function fturn()
+{
+	document.getElementById('C5').innerHTML = 'T2';
+  document.getElementById('C1').innerHTML = 'T1';
+  
+  document.getElementById('head').innerHTML = 
+  'Which Creature would you like to place first?';
+  
+  document.getElementById('move1').innerHTML = party[0];
+  document.getElementById('move2').innerHTML = party[1];
+  document.getElementById('move3').innerHTML = party[2];
+  document.getElementById('move4').innerHTML = party[3];
+  document.getElementById('move5').innerHTML = party[4];
+  
+  //console.log("We got to the fturn function");
+}
+
+function oturn()
+{
+	platurn = false;
+  //console.log("The value of tileselected is: " + tileselected);
+  console.log("The value of pieces[0] is: " + pieces[0]);
+  //document.getElementById(tileselected).style.background = 'orange';
+  
+  var i = 0;
+  while(i<piecescount)
+  {
+  	document.getElementById(pieces[i]).style.background = 'orange';
+    i++;
+  }
+  
+  //pieces[piecescount] = tileselected;
+  //piecescount++;
+	document.getElementById('head').innerHTML =
+  'The battle has started! Select a piece.';
+  
+	document.getElementById('C4').innerHTML = oparty[0];
+  console.log("This is before the display function call.")
+  
+  console.log("This is after the display function call.")
+  opieces[opiecescount] = 'C4';
+  console.log("The value of opieces[opiecescount] is: " + opieces[opiecescount]);
+  console.log("The value of opiecescount is: " + opiecescount);
+  opiecescount++;
+  
+  
+  /*
+  curcre = cre.child(oparty[0]);
+      
+      curcre.on("value", function(data) 
+  		{
+   			var np = data.val();
+   			if(platurn)
+        {
+        	health[piecescount] = np.Health;
+        }
+        else
+        {
+        	//console.log("We are assigning ohealth in the oturn function with the piecescount value of: " + piecescount);
+        	ohealth[piecescount] = np.Health;
+        }
+           
+	 		});
+     */
+     
+  display(oparty[0]);
+  pturns();
+  
+}
+
+function pturns()
+{
+	display('Packun');
+  display('Bloba');
+	console.log("We got to the pturns() function");
+	document.getElementById('select').innerHTML ='Please select a piece:';
+  document.getElementById('head').innerHTML ='Please select a piece:';
+  
+  var i = 0;
+  while(i<5)
+  {
+  	if(pieces[i] != '-')
+    {
+    	console.log("pieces[" + i + "] = " + pieces[i]);
+  		document.getElementById(pieces[i]).style.background = 'orange';
+    }
+    i++;
+  }
+  
+  /*
+  document.getElementById('move1').innerHTML = moves[0];
+  document.getElementById('move2').innerHTML = moves[1];
+  document.getElementById('move3').innerHTML = moves[2];
+  document.getElementById('move4').innerHTML = moves[3];
+  document.getElementById('move5').innerHTML = moves[4];
+  */
+  board = 1;
+  butto = -1;
+}
+
+function pturn()
+{
+  document.getElementById('head').innerHTML ='Which move would you like to use with this piece?';
+	document.getElementById('select').innerHTML ='Please select a move:';
+  
+  document.getElementById('move1').innerHTML = moves[0];
+  document.getElementById('move2').innerHTML = moves[1];
+  document.getElementById('move3').innerHTML = moves[2];
+  document.getElementById('move4').innerHTML = moves[3];
+  document.getElementById('move5').innerHTML = moves[4];
+  
+  
+}
+
+function anchor(cord)
+{
+	// halves damage taken for 3 turns.
+}
+
+function move(cord)
+{
+	var newcord = calcgridV(cord, '+', 1);
+  if(newcord == '')
+  {
+  	// Invalid move!
+  }
+  else if(document.getElementById(newcord).innerHTML != '')
+  {
+  	// Invalid move!
+  }
+  else
+  {
+  	document.getElementById(cord).innerHTML = '';
+    document.getElementById(newcord).innerHTML = selected;
+    pieces[0] = newcord;
+    document.getElementById('head').innerHTML = 
+    'Please wait for the opponent to select a move...';
+    setTimeout(function() { randai(pieces[0]); }, 1800);
+  }
+}
+
+function slap(cord)
+{
+	//console.log("We now got to the slap function");
+  platurn = true;
+	if(platurn)
+  {
+		document.getElementById('head').innerHTML = 
+  	"Which piece do you wanna slap?";
+  
+  	var cordd = '';
+  	cordd = calcgridV(cord, '-', 1);
+  	document.getElementById(cordd).style.background = 'orange';
+  
+  	cordd = calcgridV(cord, '+', 1);
+  	document.getElementById(cordd).style.background = 'orange';
+  
+  	cordd = calcgridH(cord, '-', 1);
+  	document.getElementById(cordd).style.background = 'orange';
+  
+  	cordd = calcgridH(cord, '+', 1);
+  	document.getElementById(cordd).style.background = 'orange';
+  
+  	board = 4;
+  }
+}
+
+function unslap(thiss)
+{
+		var cordd = '';
+  	//console.log("The value of thiss in the unslap function is: " + thiss);
+  	cordd = calcgridV(prevtileselected, '-', 1);
+    //console.log("This should be C2: " + cordd);
+  	document.getElementById(cordd).style.background = '#b3b3b3';
+  
+  	cordd = calcgridV(prevtileselected, '+', 1);
+  	document.getElementById(cordd).style.background = '#b3b3b3';
+  
+  	cordd = calcgridH(prevtileselected, '-', 1);
+  	document.getElementById(cordd).style.background = '#b3b3b3';
+  
+  	cordd = calcgridH(prevtileselected, '+', 1);
+  	document.getElementById(cordd).style.background = '#b3b3b3';
+  
+}
+
+function bite(cord)
+{
+	console.log("We now got to the bite function");
+  platurn = false;
+	if(platurn)
+  {
+		document.getElementById('head').innerHTML = 
+  	"Which piece do you wanna bite?";
+  
+  	var cordd = '';
+  	cordd = calcgridV(cord, '-', 1);
+  	document.getElementById(cordd).style.background = 'orange';
+  
+  	cordd = calcgridV(cord, '+', 1);
+  	document.getElementById(cordd).style.background = 'orange';
+  
+  	cordd = calcgridH(cord, '-', 1);
+  	document.getElementById(cordd).style.background = 'orange';
+  
+  	cordd = calcgridH(cord, '+', 1);
+  	document.getElementById(cordd).style.background = 'orange';
+  
+  	//butto = 3;
+  }
+  
+  else
+  {
+  	var corddd = [];
+  	var count = 0;
+  	if(calcgridV(cord, '-', 1) != '' || calcgridV(cord, '-', 1) != '		T2')
+    {
+    	corddd.push(calcgridV(cord, '-', 1));
+    	count++;
+    }
+    
+    if(calcgridH(cord, '-', 1) != '' || calcgridH(cord, '-', 1) != '		T2')
+    {
+    	corddd.push(calcgridH(cord, '-', 1));
+    	count++;
+    }
+    
+    if(calcgridV(cord, '+', 1) != '' || calcgridV(cord, '+', 1) != '		T2')
+    {
+    	corddd.push(calcgridV(cord, '+', 1));
+    	count++;
+    }
+    
+    if(calcgridH(cord, '+', 1) != '' || calcgridH(cord, '+', 1) != '		T2')
+    {
+    	corddd.push(calcgridH(cord, '+', 1));
+    	count++;
+    }
+    
+    if(count == 0)
+    {
+    	//console.log("This code executes before...");
+    	document.getElementById('head').innerHTML = 
+      "The Packun tried to use bite, but there was no target!";
+      //console.log("This code executes after!");
+    }
+    
+    else
+    {
+    	var x = Math.floor(Math.random() * count)
+      health[0] = health[0] - 70;
+      //console.log("This code executes beforeeeeeeeee...");
+      document.getElementById('head').innerHTML = 
+      "The Packun used bite! Chomp!";
+      //console.log("This code executes after");
+    }
+    
+  }
+  setTimeout(pturns, 1800);
+}
+
+function poisonsmoke(cord)
+{
+	console.log("We got to the poison smoke function")
+	document.getElementById('head').innerHTML = "Poison Smoke!";
+  setTimeout(pturns, 1800);
+}
+
+function randai(cord)
+{
+	//console.log("We got to the randai function!")
+	var count = 0;
+	for(var i = 0; i<5; i++)
+  {
+  	if(omoves[i] != '-')
+    {
+    	count++;
+    }
+  }
+  var temp = Math.floor(Math.random() * count);
+  var temppp = omoves[temp]
+  var tempp = removespaces(temppp);
+  //console.log("The value of tempp is: " + tempp);
+  //console.log("The value of cord is: " + cord);
+  movetofunction(tempp, cord);
+  document.getElementById(tileselected).style.background = '#b3b3b3'
+  
+  board = 1;
+  butto = -1;
+}
+
+function movetofunction(movee, fparam)
+{
+	console.log("We got to the movetofunction function with the " + movee + " parameter and also the " + fparam + " parameter.")
+	switch(movee) 
+  {
+  	case 'bite':
+    	bite(fparam);
+    	break;
+  	case 'poisonsmoke':
+    	poisonsmoke(fparam);
+      break;
+    case 'slap':
+    	slap(fparam);
+    	break;
+    case 'move':
+    	move(fparam);
+    	break;
+  	case 'anchor':
+    	anchor(fparam);
+      break;
+  	default:
+    	console.log("You either spelled the move or the function wrong probably.")
+	}
+}
+
+function removespaces(sent)
+{
+	var l = sent.length;
+  var i = 0;
+  var j = 0;
+  var str1 = '';
+  var str2 = '';
+  while(i<l)
+  {
+  	if(sent.charAt(i) == ' ')
+    {
+    	j = i + 1;
+      str1 = sent.substring(0,i)
+      str2 = sent.substring(j,l)
+      sent = str1.concat(str2);
+      i--;
+    }
+    i++;
+  }
+  sent = sent.toLowerCase();
+  return sent;
+}
+
+function calcgridV(cord, plus, num)
+{
+	var str = '';
+	var str1 = cord.substring(0,1);
+	var str2 = cord.substring(1,2);
+  var numb = parseInt(str2);
+	if(plus == '+')
+  {
+  	if(numb+num > 5)
+    {
+    	return '';
+    }
+    else
+    {
+    	numb = numb + num;
+      str2 = numb.toString();
+      str = str1.concat(str2);
+      return str;
+    }
+  }
+  else if(plus == '-')
+  {
+  	if(numb-num < 1)
+    {
+    	return '';
+    }
+    else
+    {
+    	numb = numb - num;
+      str2 = numb.toString();
+      str = str1.concat(str2);
+      return str;
+    }
+  }
+  else
+  {
+  	return 'You need to send either a plus or a minus!'
+  }
+}
+
+function calcgridH(cord, plus, num)
+{
+	var str = '';
+	var str1 = cord.substring(0,1);
+  // console.log('This is the value of str1: ' + str1);
+	var str2 = cord.substring(1,2);
+  // console.log('This is the value of str2: ' + str2);
+  
+	if(plus == '+')
+  {
+  	while(num>0)
+    {
+    	switch(str1) 
+  		{
+  			case 'A':
+    		str1 = 'B';
+    		break;
+        
+  			case 'B':
+    		str1 = 'C';
+      	break;
+        
+        case 'C':
+        str1 = 'D';
+        break;
+        
+        case 'D':
+        str1 = 'E';
+        break;
+        
+  			default:
+    		return '';
+			}
+      num--;
+    }
+    
+    str = str1.concat(str2);
+    
+    return str;
+  }
+  else if(plus == '-')
+  {
+  	while(num>0)
+    {
+    	switch(str1) 
+  		{
+  			case 'E':
+    		str1 = 'D';
+    		break;
+        
+  			case 'B':
+    		str1 = 'A';
+      	break;
+        
+        case 'C':
+        str1 = 'B';
+        break;
+        
+        case 'D':
+        str1 = 'C';
+        break;
+        
+  			default:
+    		return '';
+			}
+      num--;
+    }
+    str = str1.concat(str2);
+    return str;
+  }
+  else
+  {
+  	return 'You need to send either a plus or a minus!'
+  }
+}
+
+function display(str)
+{
+	var helix = health[0];
+  //console.log("str = " + str);
+	if (str == 'Packun')
+  {
+  	helix = ohealth[0];
+  }
+  
+  
+  
+  curcre = cre.child(str)
+  
+  curcre.on("value", function(data) 
+  {
+  	var np = data.val();
+    h = np.Health
+    t = np.Trait
+    
+	});
+  
+  //console.log("The value of h is " + h);
+  //console.log("The value of t is " + t);
+  
+  var traa = tra.child(t);
+  // console.log("The value of traa: " + traa);
+  
+  traa.on("value", function(data) 
+  {
+  	var np = data.val();
+    cheer = np.Data
+    
+	});
+  
+  // console.log("The value of cheer: " + cheer);
+  
+  document.getElementById('display1').innerHTML = 
+  str + '\'s health is currently at ' + helix + '/' + h + '.';
+  document.getElementById('display2').innerHTML = 
+  str + '\'s trait is ' + t + '.';
+  document.getElementById('display3').innerHTML = 
+  t + ': ' + cheer;
+  
+  
+}
+
+
+function plapieces(thiss, check)
+{
+		platurn = true;
+  	if(check == '' && document.getElementById(thiss).innerHTML == '')
+    {
+  		document.getElementById(thiss).innerHTML = selected
+    	pieces[piecescount] = thiss;
+    	piecescount++;
+      curcre = cre.child(selected);
+      
+      curcre.on("value", function(data) 
+  		{
+   			var np = data.val();
+   			if(platurn)
+        {
+        	health[piecescount] = np.Health;
+        }
+        else
+        {
+        	console.log("We are assigning ohealth in the plapieces function with the piecescount value of: " + piecescount);
+        	ohealth[piecescount] = np.Health;
+        }
+           
+	 		});
+      
+      console.log('The value of health[piecescount] is ' + health[piecescount]);
+      console.log('The value of ohealth[piecescount] is ' + ohealth[piecescount]);
+    
+    	document.getElementById('A1').style.background = '#b3b3b3';
+    	document.getElementById('B1').style.background = '#b3b3b3';
+    	document.getElementById('D1').style.background = '#b3b3b3';
+    	document.getElementById('E1').style.background = '#b3b3b3';
+    	document.getElementById('A2').style.background = '#b3b3b3';
+    	document.getElementById('B2').style.background = '#b3b3b3';
+    	document.getElementById('C2').style.background = '#b3b3b3';
+    	document.getElementById('D2').style.background = '#b3b3b3';
+    	document.getElementById('E2').style.background = '#b3b3b3';
+    	board ++;
+    	document.getElementById('head').innerHTML =
+      'Your opponent is selecting, please wait...';
+    	setTimeout(oturn, 1800);
+    
+    }
+    else if(check == '' && document.getElementById(thiss).innerHTML != '')
+    {
+    	display(document.getElementById(thiss).innerHTML);
+    }
+    else
+    {
+    	document.getElementById('head').innerHTML = "Please choose a valid tile"
+    }
+  }
+  
+function selpiece(thiss)
+{
+	//console.log(document.getElementById(thiss).innerHTML);
+    //console.log("The value of prevtileselected.style.background is : " + document.getElementById(prevtileselected).style.background);
+    
+    //console.log("The value of prevtileselected is : " + document.getElementById(prevtileselected));
+    
+    if (document.getElementById(prevtileselected).style.background.substring(0,17) == 'rgb(64, 237, 228)')
+    {
+    document.getElementById(prevtileselected).style.background = '#b3b3b3';
+    }
+    
+    
+    var str = document.getElementById(thiss).style.background.substring(0,6);
+    
+    if(document.getElementById(thiss).innerHTML != '')
+    {
+    	document.getElementById(thiss).style.background = '#40ede4'
+    	display(document.getElementById(thiss).innerHTML);
+    }
+    
+    // I have to make it so that only one tile can be selected 
+    // (#40ede4), and also distinguish between a player's piece
+    // being selected, and an opponent's piece being selected.
+    // It would probably be best to use the tileselected variable.
+    
+    //console.log(str);
+  	if(str != 'orange')
+    {
+    	document.getElementById('head').innerHTML = 
+      'Please choose a valid tile.';
+    }
+    else
+    {
+    	document.getElementById(thiss).style.background = '#40ede4'
+      butto = 1;
+      board = -1;
+      //console.log("We got to the pturn() function call");
+    	pturn();
+    }
+}
+
+function boardslap(thiss)
+{
+	var str = document.getElementById(thiss).style.background.substring(0,6);
+    //console.log("str = " + str);
+  	if (str == 'orange')
+    {
+    	if (document.getElementById(thiss).innerHTML == '')
+      {
+      	document.getElementById('head').innerHTML = 
+    		'There is no enemy on this square. :('
+      }
+      else
+      {
+      	ohealth[0] -= 30;
+        unslap(thiss);
+        opdamage();
+        document.getElementById('head').innerHTML = 
+    		'Please wait for the opponent to select a move...';
+        setTimeout(function() { randai(pieces[0]); }, 1800);
+      }
+    }
+    else
+    {
+    document.getElementById('head').innerHTML = 
+    'Please choose a valid tile' 
+    }
+}
+
+function opdamage() //To check for deaths when the opponent takes damage
+{
+	console.log("We got to the opdamage() function!");
+	
+  /*
+  console.log("The value of opieces[0] = " + opieces[0]);
+  console.log("The value of opieces[1] = " + opieces[1]);
+  console.log("The value of opieces[2] = " + opieces[2]);
+  console.log("The value of opieces[3] = " + opieces[3]);
+  console.log("The value of opieces[4] = " + opieces[4]);
+  */
+  
+	i = 0;
+  while(i<5)
+  {
+  	if(ohealth[i] != '-')
+    {
+    	if(ohealth[i] <= 0)
+      {
+      	opdeath(i);
+      }
+    }
+    i++;
+  }
+}
+
+function opdeath(x)
+{
+	console.log("We got to the opdeath() function!");
+  console.log("The value of opieces[x] = " + opieces[x]);
+  console.log("The value of x is: " + x);
+	document.getElementById(opieces[x]).innerHTML = '';
+  opieces[x] = '-';
+  document.getElementById('head').innerHTML = oparty[x] + " has died!";
+  
+  var b = true;
+  var i = 0;
+  
+  console.log("The value of ohealth[0] is: " + ohealth[0]);
+  console.log("The value of ohealth[1] is: " + ohealth[1]);
+  console.log("The value of ohealth[2] is: " + ohealth[2]);
+  console.log("The value of ohealth[3] is: " + ohealth[3]);
+  console.log("The value of ohealth[4] is: " + ohealth[4]);
+  
+  while(i<5)
+  {
+  	
+  	if(ohealth[i] > 0)
+    {
+    	console.log("The value of ohealth[i] is: " + ohealth[i]);
+      console.log("The value of i is: " + i);
+    	b = false;
+      break;
+    }
+    i++;
+  }
+  
+  console.log("The value of b is: " + b);
+  
+  if(b)
+  {
+  	setTimeout(playerwin, 1800);
+  }
+}
+
+function playerwin()
+{
+	console.log("We got to the playerwin() function!");
+	document.getElementById('head').innerHTML = playerName + " has won!";
+  document.getElementById('select').innerHTML = "Congrats " + playerName + "!";
+  
+  document.getElementById('move1').innerHTML = 'G';
+  document.getElementById('move2').innerHTML = 'G';
+  document.getElementById('move3').innerHTML = 'W';
+  document.getElementById('move4').innerHTML = 'P';
+  document.getElementById('move5').innerHTML = '!';
+  
+  board = -1;
+  butto = -1
+}
+
+</script>
+
+<style>
+
+.sq {
+  height: 65px;
+  width: 60px;
+  background-color: #edc7c7;
+  border-style: solid;
+  float: left;
+}
+
+body {
+  
+  background-color: #502442;
+  background-image: /Pictures/rusticCastleBackground.jpg;
+
+}
+
+.grid-container {
+  display: grid;
+  
+  grid-template-columns: auto auto auto auto auto;
+  
+  /* grid-template-columns: 20% 20% 20% 20% 20%; */
+  
+  /* grid-template-rows: 20% 20% 20% 20% 20%; */
+  
+  background-color: #a31414;
+  padding: 10px;
+}
+
+.grid-item {
+  background-color: #b3b3b3;
+  border: 1px solid rgba(0, 0, 0, 0.8);
+  padding: 20px;
+  font-size: 30px;
+  text-align: center;
+}
+
+.xer {
+  background-image: linear-gradient(#a88f8f, #141313);
+  color: black;
+  border: 5px solid rgb(244, 66, 66);
+  border-radius: 60px;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  cursor: pointer;
+  width: 150px;
+  transition-duration: 0.4s;
+}
+
+
+</style>
+
