@@ -1,0 +1,716 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+<title>Portfolio Website</title>
+
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="manifest" href="/site.webmanifest">
+
+
+
+  <div>
+  
+  <h1 id = "head" class = "head">Jody</h1>
+  
+  <button type="button" class = "topButton margin" onclick = "openProjectsPage()" id = "projects">Projects</button>
+  
+  
+  <button type="button" class = "topButton" onclick = "openAboutMePage()" id = "about">About Me</button>
+  
+  <button type="button" class = "topButton" onclick = "openHomePage()" id = "home">Home</button>
+  
+    <div class="dropdown" id = "dropdown">
+  <button class="dropbtn">Dropdown</button>
+  <div class="dropdown-content">
+    <a href="#">Link 1</a>
+    <a href="#">Link 2</a>
+    <a href="#">Link 3</a>
+  </div>
+</div>
+  
+  </div>
+  
+
+  
+
+</head>
+
+<body>
+
+<!--
+  <div class="content">
+   My name is Johnathan (Jody) Doyle. I am an aspiring Web designer, Web developer, Game developer, Software Developer, Software engineer. I have a Bachelor's degree in Computer Science & Software Engineering from Maynooth University and over 5 years of experience in languages such as HTML, CSS, JavaScript, Java and Python just to name a few. I am looking for the ideal role with an opportunity to showcase my skills.
+  </div>
+  -->
+  
+  <div class="content content1">
+   MY NAME IS JOHNATHAN (JODY) DOYLE
+  </div>
+  
+  <div class = "content content2">
+   I am an aspiring Web Designer, Web Developer, Game Developer, Software Developer, and Software Engineer.
+  </div>
+  
+    <div class = "content content3">
+I have a Bachelor's degree in Computer Science & Software Engineering from Maynooth University and over 5 years of experience in languages such as HTML, CSS, JavaScript, Java and Python just to name a few. I am looking for the ideal role with an opportunity to showcase my skills.
+  </div>
+  
+  
+  <div>
+  <button type="button" id = "hireMe" class = "myButton marg" onclick = "revealContact();">Hire Me</button>
+  <a href="JohnathanDoyleCV.pdf" download="JohnathanDoyleCV">
+  <button type="button" class = "myButton margg">Download CV</button>
+  </a>
+  </div>
+  
+
+<!-- <img src = "https://www.pikpng.com/pngl/m/32-324546_bald-eagle-png-background-image-eagle-png-transparent.png" class = "timage";>  -->
+
+<address class = "contact" id = "contact">
+Email: <a href="mailto:jody.doyle@hotmail.com">jody.doyle@hotmail.com</a><br> 
+
+</address>
+
+<div class = "contact" id = "contasssct">
+  
+  
+  <br>
+
+  </div>
+  
+  <br>
+  
+  <div class = "contact" id = "contact2">
+
+
+  Linkedin: 
+  
+  </div>
+
+
+<!--
+<div class="card-holder">
+  <div class="card bg-spring">
+   Keep Calm and Add Some Colors.
+  </div>
+</div>
+-->
+
+
+</body>
+
+
+
+</html>
+
+<script>
+
+var hire = true;
+var firs = window.matchMedia("(max-width: 798px)");
+var kirs = window.matchMedia("(max-width: 621px)");
+var matt = window.matchMedia("(max-width: 503px)");
+var thew = window.matchMedia("(max-width: 288px)");
+var fina = window.matchMedia("(max-width: 238px)");
+
+  var body = document.body;
+  var html = document.documentElement;
+
+var width = Math.max(body.offsetWidth, html.clientWidth, html.offsetWidth);
+width += 19;
+console.log(width);
+
+firs.addListener(bigAdjustment);
+
+kirs.addListener(smallAdjustment);
+
+fina.addListener(finalAdjustment);
+
+thew.addListener(header);
+
+matt.addListener(dropdown);
+
+
+if(width > 621)
+{
+	bigAdjustment(firs);
+}
+else if(width > 503)
+{
+	smallAdjustment(kirs);
+}
+else if(width > 238)
+{
+	header(thew);
+}
+else
+{
+	finalAdjustment(fina);
+}
+
+
+function dropdown(matt) {
+  console.log("oranges");
+  var a = document.getElementById("home");
+  var b = document.getElementById("about");
+  var c = document.getElementById("projects");
+  var x = document.getElementById("dropdown");
+  var h = document.getElementById("head");
+  if (matt.matches) { // If media query matches
+    //document.body.style.backgroundColor = "yellow";
+    console.log("lemons!!!!!!!!!!!");
+
+    a.style.display = "none";
+    b.style.display = "none";
+    c.style.display = "none";
+    x.style.display = "inline-block";
+
+    /*
+    h.classList.remove("headmleftZero");
+    x.classList.remove("headmrightZero");
+    
+    h.classList.add("headmleft");
+    x.classList.add("headmright");
+    */
+
+
+    h.style.marginLeft = "10%";
+    x.style.marginRight = "10%";
+  } else {
+    //document.body.style.backgroundColor = "pink";
+
+
+    a.style.display = "inline-block";
+    b.style.display = "inline-block";
+    c.style.display = "inline-block";
+    x.style.display = "none";
+
+
+    /*
+    h.classList.remove("headmleftZero");
+    x.classList.remove("headmrightZero");
+    
+    h.classList.remove("headmleft");
+    x.classList.remove("headmright");
+    */
+
+
+    h.style.marginLeft = "0%";
+    x.style.marginRight = "0%";
+  }
+}
+
+function header(thew) {
+	var a = document.getElementById("home");
+  var b = document.getElementById("about");
+  var c = document.getElementById("projects");
+  var x = document.getElementById("dropdown");
+  var h = document.getElementById("head");
+  if (thew.matches) {
+  
+    a.style.display = "none";
+    b.style.display = "none";
+    c.style.display = "none";
+    x.style.display = "inline-block";
+
+    h.style.marginLeft = "0%";
+    x.style.marginRight = "0%";
+
+    /*
+    h.classList.add("headmleftZero");
+    x.classList.add("headmrightZero");
+    */
+    console.log("thew");
+  }
+  else
+  {
+    a.style.display = "none";
+    b.style.display = "none";
+    c.style.display = "none";
+    x.style.display = "inline-block";
+  
+  	h.style.marginLeft = "10%";
+    x.style.marginRight = "10%";
+  }
+}
+
+
+function bigAdjustment(firs) {
+  var h = document.getElementById("head");
+  var c = document.getElementById("projects");
+
+  if (firs.matches) {
+    h.style.marginLeft = "10%";
+
+    c.style.marginRight = "10%";
+    //c.style.float = "right";
+  } else {
+    h.style.marginLeft = "20%";
+
+    c.style.marginRight = "20%";
+    //c.style.float = "left";
+  }
+
+}
+
+
+function smallAdjustment(kirs) {
+  var h = document.getElementById("head");
+  var c = document.getElementById("projects");
+
+  if (kirs.matches) {
+    h.style.marginLeft = "0%";
+
+    c.style.marginRight = "0%";
+    //c.style.float = "right";
+  } else {
+    h.style.marginLeft = "10%";
+
+    c.style.marginRight = "10%";
+    //c.style.float = "left";
+  }
+}
+
+function finalAdjustment(fina)
+{
+	var x = document.getElementById("dropdown");
+  var h = document.getElementById("head");
+  
+  console.log("fina")
+  
+  if(fina.matches)
+  {
+  	console.log("fina.matches");
+  	x.style.fontSize = "10vw";
+    h.style.fontSize = "10vw";
+  }
+}
+
+
+
+function revealContact() {
+  if (hire) {
+    document.getElementById('contact').style.display = 'inline';
+    document.getElementById('contact2').style.display = 'inline';
+
+    document.getElementById('hireMe').innerHTML = "Hide Me";
+
+    hire = false;
+  } else {
+    document.getElementById('contact').style.display = 'none';
+    document.getElementById('contact2').style.display = 'none';
+
+    document.getElementById('hireMe').innerHTML = "Hire Me";
+
+    hire = true;
+  }
+
+
+}
+
+function openHomePage()
+{
+
+	        try
+    {
+	    window.location.href = "http://jodydoyle.com";
+    }
+    catch(err)
+    {
+        document.getElementById("head").innerHTML = "Error";
+    }
+
+}
+
+function openAboutMePage()
+{
+    
+        try
+    {
+	    window.location.href = "http://jodydoyle.com/about";
+    }
+    catch(err)
+    {
+        document.getElementById("head").innerHTML = "Error";
+    }
+
+}
+
+function openProjectsPage()
+{
+    
+        try
+    {
+	    window.location.href = "http://jodydoyle.com/projects";
+    }
+    catch(err)
+    {
+        document.getElementById("head").innerHTML = "Error";
+    }
+	
+
+}
+
+function downloadCV()
+{
+	//window.location.href = "http://jodydoyle.com/projectstest";
+}
+
+
+
+
+/*
+
+// Automatic Slideshow - change image every 3 seconds
+var myIndex = 0;
+carousel();
+
+function carousel() {
+  var i;
+  var x = document.getElementsByClassName("mySlides");
+  for (i = 0; i < x.length; i++) {
+    x[i].style.display = "none";
+  }
+  myIndex++;
+  if (myIndex > x.length) {myIndex = 1}
+  x[myIndex-1].style.display = "block";
+  setTimeout(carousel, 3000);
+}
+
+*/
+
+
+//This is some code that dynamically creates files and allows you to download them.
+/*
+function download(filename, text) {
+    var element = document.createElement('a');
+    element.setAttribute('href', 'data:text/plain;charset=utf-8,' + encodeURIComponent(text));
+    element.setAttribute('download', filename);
+
+    element.style.display = 'none';
+    document.body.appendChild(element);
+
+    element.click();
+
+    document.body.removeChild(element);
+}
+
+// Start file download.
+document.getElementById("dwn-btn").addEventListener("click", function(){
+    // Generate download of hello.txt file with some content
+    var text = document.getElementById("text-val").value;
+    var filename = "hello.txt";
+    
+    download(filename, text);
+}, false);
+*/
+
+</script>
+
+<style>
+
+body {
+  /* background-color: #f57120;
+  
+   background: linear-gradient(110deg, #fdcd3b 60%, #ffed4b 60%); */
+   
+   /*
+   
+    background: -webkit-linear-gradient(70deg, #fff810  30%, rgba(0, 0, 0, 0) 30%), -webkit-linear-gradient(30deg, #63e89e 60%, #ff7ee3 60%);
+    background: -o-linear-gradient(70deg, #fff810  30%, rgba(0, 0, 0, 0) 30%), -o-linear-gradient(30deg, #63e89e 60%, #ff7ee3 60%);
+    background: -moz-linear-gradient(70deg, #fff810  30%, rgba(0, 0, 0, 0) 30%), -moz-linear-gradient(30deg, #63e89e 60%, #ff7ee3 60%);
+    background: linear-gradient(70deg, #fff810  30%, rgba(0, 0, 0, 0) 30%), linear-gradient(30deg, #63e89e 60%, #ff7ee3 60%);
+    
+        background: -webkit-linear-gradient(110deg, #a60af3 40%, rgba(0, 0, 0, 0) 40%) no-repeat center center fixed, -webkit-radial-gradient(farthest-corner at 0% 0%, #7a00cc 70%, #c03fff 70%) no-repeat center center fixed;
+    background: -o-linear-gradient(110deg, #a60af3 40%, rgba(0, 0, 0, 0) 40%) no-repeat center center fixed, -o-radial-gradient(farthest-corner at 0% 0%, #7a00cc 70%, #c03fff 70%) no-repeat center center fixed;
+    background: -moz-linear-gradient(110deg, #a60af3 40%, rgba(0, 0, 0, 0) 40%) no-repeat center center fixed, -moz-radial-gradient(farthest-corner at 0% 0%, #7a00cc 70%, #c03fff 70%) no-repeat center center fixed;
+    background: linear-gradient(110deg, #a60af3 40%, rgba(0, 0, 0, 0) 40%) no-repeat center center fixed, radial-gradient(farthest-corner at 0% 0%, #7a00cc 70%, #c03fff 70%) no-repeat center center fixed;
+    
+    */
+    
+    
+    color: #fff;
+    background: -webkit-radial-gradient(farthest-corner at 100% 0%, #a60af3 40%, rgba(0, 0, 0, 0) 40%) no-repeat center center fixed, -webkit-radial-gradient(farthest-corner at 0% 0%, #7a00cc 70%, #c03fff 70%) no-repeat center center fixed;
+    background: -o-radial-gradient(farthest-corner at 100% 0%, #a60af3 40%, rgba(0, 0, 0, 0) 40%) no-repeat center center fixed, -o-radial-gradient(farthest-corner at 0% 0%, #7a00cc 70%, #c03fff 70%) no-repeat center center fixed;
+    background: -moz-radial-gradient(farthest-corner at 100% 0%, #a60af3 40%, rgba(0, 0, 0, 0) 40%) no-repeat center center fixed, -moz-radial-gradient(farthest-corner at 0% 0%, #7a00cc 70%, #c03fff 70%) no-repeat center center fixed;
+    background: linear-gradient(to bottom, #e1deff 65px, rgba(0, 0, 0, 0) 60px), radial-gradient(farthest-corner at 80% 0%, #b832b8 40%, rgba(0, 0, 0, 0) 40%) no-repeat center center fixed, radial-gradient(farthest-corner at 20% 45%, #750075 60%, #ab22ab 60%) no-repeat center center fixed;
+    
+     -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  
+  background-repeat: no-repeat;
+
+}
+
+
+
+.head {
+  
+  
+  display: inline;
+  margin-left: 20%;
+  font-family: Georgia;
+  color: #4a3232;
+  font-size: 40px;
+  
+  
+}
+
+
+.card-holder {
+  margin: 2em 0;
+}
+
+.bg-spring {
+  /*
+    background: -webkit-linear-gradient(70deg, #fff810  30%, rgba(0,0,0,0) 30%), -webkit-linear-gradient(30deg, #63e89e 60%, #ff7ee3 60%);
+    background: -o-linear-gradient(70deg, #fff810  30%, rgba(0,0,0,0) 30%), -o-linear-gradient(30deg, #63e89e 60%, #ff7ee3 60%);
+    background: -moz-linear-gradient(70deg, #fff810  30%, rgba(0,0,0,0) 30%), -moz-linear-gradient(30deg, #63e89e 60%, #ff7ee3 60%);
+    background: linear-gradient(70deg, #fff810  30%, rgba(0,0,0,0) 30%), linear-gradient(30deg, #63e89e 60%, #ff7ee3 60%);
+    
+    
+        color: #fff;
+    background: -webkit-linear-gradient(-70deg, #fa7c30 30%, rgba(0, 0, 0, 0) 30%), url('https://www.nasa.gov/sites/default/files/thumbnails/image/pia21421-cr.jpg');
+    background: -o-linear-gradient(-70deg, #fa7c30 30%, rgba(0, 0, 0, 0) 30%), url('https://www.nasa.gov/sites/default/files/thumbnails/image/pia21421-cr.jpg');
+    background: -moz-linear-gradient(-70deg, #fa7c30 30%, rgba(0, 0, 0, 0) 30%), url('https://www.nasa.gov/sites/default/files/thumbnails/image/pia21421-cr.jpg');
+    background: linear-gradient(-70deg, #fa7c30 30%, rgba(0, 0, 0, 0) 30%), url('https://www.nasa.gov/sites/default/files/thumbnails/image/pia21421-cr.jpg');
+  background-size: cover;
+  background-position: 50% 11%;
+  text-align: right;
+  
+  */
+}
+
+.card {
+  font-family: -apple-system, BlinkMacSystemFont, 'Open Sans', sans-serif;
+  font-size: 3em;
+  font-weight: 800;
+  height: 4em;
+  width: 64em;
+  padding: 0.5em 1em;
+  border-radius: 0.25em;
+  display: table-cell;
+  vertical-align: middle;
+  letter-spacing: -2px;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0);
+}
+
+.card .subtle {
+  color: #000;
+  font-size: 0.5em;
+  font-weight: 400;
+  letter-spacing: -1px;
+}
+
+.timage {
+  
+  background: transparent;
+  
+}
+
+.content {
+  
+  font-size: 20px;
+  
+  margin-left: 20%;
+  margin-right: 20%;
+
+  
+  
+  
+}
+
+.content1 {
+  
+  margin-top: 60px;
+  color: #f0bc00;
+  
+    word-spacing: 1px;
+  line-height: 1.2;
+  
+}
+
+.content2 {
+  
+  font-size: 4.8vw;
+  
+  
+}
+
+.content3 {
+  
+  word-spacing: 1px;
+  line-height: 1.2;
+  margin-top: 10px;
+  
+}
+
+.marg{
+  margin-left: 35%;
+}
+
+.margg {
+  
+  margin-left: 10%;
+  
+}
+
+
+.myButton {
+	background-color: transparent;
+  margin-top: 60px;
+  margin-bottom: 30px;
+	border: 1px solid #e65f44;
+	display: inline-block;
+	cursor: pointer;
+	color: #ff8300;
+	font-family: Arial;
+	font-size: 18px;
+	padding: 14px 30px;
+	text-decoration: none;
+	text-shadow: 0px 1px 0px #ded17c;
+  transition-duration: 0.2s;
+  
+  
+}
+.myButton:hover {
+  transition-duration: 0.2s;
+	background-color: #ff8300;
+  color: white;
+}
+.myButton:active {
+	position: relative;
+	top: 1px;
+}
+
+.topButton {
+  background-color: transparent;
+	border: 0px solid #e65f44;
+	display: inline-block;
+	cursor: pointer;
+	color: #000000;
+	font-family: Georgia;
+	font-size: 18px;
+	padding: 14px 30px;
+	text-decoration: none;
+  float: right;
+
+  transition-duration: 0.4s;
+  transition-delay: 0.11s;
+  
+/*	background-color: transparent;
+	display: inline-block;
+	cursor: pointer;
+	color: #000000;
+	font-family: Georgia;
+	font-size: 17px;
+	padding: 16px 31px;
+	text-decoration: none; */
+	
+}
+
+.topButton:hover {
+  
+  transition-delay: 0s;
+  transition-duration: 0.6s;
+	background-color: #4a3232;
+  color: #e0d5d5;
+  
+}
+
+.margin {
+  
+  margin-right: 20%;
+  
+}
+
+.contact {
+  
+  
+  margin-left: 35%;
+  margin-right: 20%;
+  text-align: center;
+  
+  font-family: Arial;
+  
+  display: none;
+  
+}
+/*
+@media screen and (max-width: 798px) {
+  .head {
+    /* width: 100%; The width is 100%, when the viewport is 800px or smaller 
+    
+    margin-left: 10%;
+  }
+  #projects {
+    
+    float: right;
+    margin-right: 10%;
+    
+  }
+  }
+  */
+  
+  @media screen and (max-width: 621px) {
+  .head {
+    /* width: 100%; The width is 100%, when the viewport is 800px or smaller */
+    
+    margin-left: 0%;
+  }
+  #projects {
+    
+    
+    margin-right: 0%;
+    
+  }
+  }
+  
+  /* Dropdown Button */
+.dropbtn {
+	background-color: #4a3232;
+  color: #e0d5d5;
+  padding: 16px;
+  font-size: 16px;
+  border: none;
+}
+
+/* The container <div> - needed to position the dropdown content */
+.dropdown {
+  position: relative;
+  display: none;
+  float: right;
+  
+}
+
+/* Dropdown Content (Hidden by Default) */
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #f1f1f1;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1;
+}
+
+/* Links inside the dropdown */
+.dropdown-content a {
+  color: black;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+}
+
+/* Change color of dropdown links on hover */
+.dropdown-content a:hover {background-color: #ddd;}
+
+/* Show the dropdown menu on hover */
+.dropdown:hover .dropdown-content {display: block;}
+
+/* Change the background color of the dropdown button when the dropdown content is shown */
+.dropdown:hover .dropbtn {background-color: #3e8e41;}
+
+</style>

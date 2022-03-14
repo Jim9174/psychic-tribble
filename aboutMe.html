@@ -1,0 +1,676 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+<title>Portfolio Website</title>
+
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="manifest" href="/site.webmanifest">
+
+  <div>
+  
+  <h1 id = "head" class = "head">Jody</h1>
+  
+  <button type="button" class = "topButton margin" onclick = "openProjectsPage()">Projects</button>
+  
+  
+  <button type="button" class = "topButton" onclick = "openAboutMePage()">About Me</button>
+  
+  <button type="button" class = "topButton" onclick = "openHomePage()">Home</button>
+  
+  
+  </div>
+  
+
+</head>
+
+<body onload = "adjustCentre()">
+
+<!--
+  <div class="content">
+   My name is Johnathan (Jody) Doyle. I am an aspiring Web designer, Web developer, Game developer, Software Developer, Software engineer. I have a Bachelor's degree in Computer Science & Software Engineering from Maynooth University and over 5 years of experience in languages such as HTML, CSS, JavaScript, Java and Python just to name a few. I am looking for the ideal role with an opportunity to showcase my skills.
+  </div>
+  
+  
+  <div class="content content1">
+   MY NAME IS JOHNATHAN (JODY) DOYLE
+  </div>
+  
+  
+  
+  <button type="button" id = "goBck" class = "myButton" onclick = "lf();">Test</button>
+  
+  -->
+  
+  <div class = "content content2">
+   About Me Page coming Soon!
+  </div>
+  
+    <div class = "content content3">
+My About Me Page is currently under development and should be ready soon! For now continue to enjoy the home page!
+  </div>
+  
+  <button type="button" id = "goBack" class = "myButton" onclick = "goBack();">Go Back to Home</button>
+  
+  
+  
+  
+  <!--
+  <div>
+  <button type="button" id = "hireMe" class = "myButton marg" onclick = "revealContact();">Hire Me</button>
+  <button type="button" class = "myButton margg" onclick = "downloadCV();">Download CV</button>
+  </div>
+  
+
+<!-- <img src = "https://www.pikpng.com/pngl/m/32-324546_bald-eagle-png-background-image-eagle-png-transparent.png" class = "timage";>  
+
+<address class = "contact" id = "contact">
+Email: <a href="mailto:jody.doyle@hotmail.com">jody.doyle@hotmail.com</a><br> 
+
+
+
+</address>
+
+-->
+
+
+
+<div class = "contact" id = "contasssct">
+  
+  
+  <br>
+
+  </div>
+  
+  <br>
+  
+  <div class = "contact" id = "contact2">
+
+
+  Linkedin: 
+  
+  </div>
+
+<span id = "star-five">
+
+</span>
+<!--
+<div class="card-holder">
+  <div class="card bg-spring">
+   Keep Calm and Add Some Colors.
+  </div>
+</div>
+-->
+
+
+</body>
+
+
+
+</html>
+
+<script>
+function adjustCentre()
+{
+	var x = document.getElementById("goBack");
+  var w = x.offsetWidth;
+  var h = x.offsetHeight;
+  var hh = document.height;
+  var ww = document.width;
+  
+  var body = document.body;
+  var html = document.documentElement;
+
+	var height = Math.max( body.scrollHeight, body.offsetHeight, 
+                       html.clientHeight, html.scrollHeight, html.offsetHeight );
+                       
+
+	var width = Math.max(body.offsetWidth, 
+                       html.clientWidth, html.offsetWidth );
+                       
+  /*
+                       
+  console.log("The value of body.offsetWidth is: " + body.offsetWidth);
+  console.log("The value of html.clientWidth is: " + html.clientWidth);
+  console.log("The value of body.htmlWidth is: " + html.offsetWidth);
+  
+	console.log("This is the width of this button: " + w);
+  console.log("This is the height of this button: " + h);
+  console.log("Also, this is the width of the document: " + width);
+  console.log("Also, this is the height of the document: " + height);
+  
+  */
+  
+  var s = body.offsetWidth / 2;
+  var wt = w / 2;
+  s -= wt;
+  var f = s + "px";
+  
+  
+  
+  var y = document.getElementById("goBack");
+  y.style.marginLeft = f;
+  // console.log("This is the value of f: " + f);
+}
+
+function goBack()
+{
+	window.location.href = "http://jodydoyle.com";
+}
+
+function lf()
+{
+	var x = "#FFCF00";
+  var y = "#FFD933";
+  findHex(x,y);
+}
+
+function openHomePage()
+{
+
+	        try
+    {
+	    window.location.href = "http://jodydoyle.com";
+    }
+    catch(err)
+    {
+        document.getElementById("head").innerHTML = "Error";
+    }
+
+}
+
+function openAboutMePage()
+{
+    
+        try
+    {
+	    window.location.href = "http://jodydoyle.com/about";
+    }
+    catch(err)
+    {
+        document.getElementById("head").innerHTML = "Error";
+    }
+
+}
+
+function openProjectsPage()
+{
+    
+        try
+    {
+	    window.location.href = "http://jodydoyle.com/projects";
+    }
+    catch(err)
+    {
+        document.getElementById("head").innerHTML = "Error";
+    }
+	
+
+}
+
+function findHex(x, y)
+{
+	var i = 0;
+  var j = 0;
+  var k = 0;
+	var num = 1;
+  var l = x.length;
+  l--;
+  var arx = [];
+  var ary = [];
+  var exp = [];
+  var fin = [];
+  
+  while(i<l)
+  {
+  	exp[i] = num;
+    num *= 16;
+    i++;
+  }
+  
+  console.log("The value of exp is: " + exp);
+  i = 0;
+  
+  while(i<l)
+  {
+  	
+    j = i + 1;
+    k = j + 1;
+    arx[i] = x.substring(j,k);
+
+    
+
+  
+  	i++;
+    
+  }
+  
+  arx = switchf(arx);
+  
+  console.log("The value of arx is: " + arx);
+  i = 0;
+  while(i<l)
+  {
+  	
+    j = i + 1;
+    k = j + 1;
+    ary[i] = y.substring(j,k);
+    
+  
+  	i++;
+    
+  }
+  
+  ary = switchf(ary);
+  
+  var ll = l-1;
+  var tnum = 0;
+  var num1 = 0;
+  var num2 = 0;
+  var fnum = 0;
+  var e = 0;
+  i = 0;
+  while(i<l)
+  {
+  	e = exp[ll];
+    
+    tnum = e * arx[i];
+    num1 += tnum;
+    tnum = e * ary[i];
+    num2 += tnum;
+    
+    i++;
+    ll--;
+  }
+  
+  tnum = num1 - num2;
+  fnum = tnum + num1;
+  
+  if(fnum < 0)
+  {
+  	tnum *= -1;
+  	fnum = tnum + num2;
+  }
+  var c = 0;
+  i = 0;
+  ll = l - 1;
+  while(i<l)
+  {
+  	e = exp[ll];
+    while(c < 16)
+    {
+    	if(fnum - e > 0)
+      {
+      	fnum -= e;
+        c++;
+      }
+      else
+      {
+      	fin[i] = c
+        break;
+      }
+    }
+    
+    c = 0;
+    ll--;
+    i++;
+  }
+  fin = switchf(fin, true);
+  var str = "#";
+  i = 0;
+  while(i<l)
+  {
+  	str += fin[i];
+    i++;
+  }
+  console.log("The value of the new colour is: " + str);
+}
+
+function switchf(ar, r)
+{
+	var i = 0;
+  var l = ar.length;
+	if(r)
+  {
+  	while(i < l)
+    {
+    switch(ar[i]) {
+  	case 10:
+    ar[i] = 'A';
+    break;
+    case 11:
+    ar[i] = 'B';
+    break;
+    case 12:
+    ar[i] = 'C';
+    break;
+    case 13:
+    ar[i] = 'D';
+    break;
+    case 14:
+    ar[i] = 'E';
+    break;
+    case 15:
+    ar[i] = 'F';
+    break;
+  	default:
+    // code block
+    }
+      
+      i++;
+    }
+  }
+  else
+  {
+  	while(i < l)
+    {
+    switch(ar[i]) {
+  	case 'A':
+    ar[i] = 10;
+    break;
+    case 'B':
+    ar[i] = 11;
+    break;
+    case 'C':
+    ar[i] = 12;
+    break;
+    case 'D':
+    ar[i] = 13;
+    break;
+    case 'E':
+    ar[i] = 14;
+    break;
+    case 'F':
+    ar[i] = 15;
+    break;
+  	default:
+    // code block
+    }
+      
+      i++;
+    }
+  }
+  return ar;
+}
+
+</script>
+
+<style>
+body {
+  /* background-color: #f57120;
+  
+   background: linear-gradient(110deg, #fdcd3b 60%, #ffed4b 60%); */
+   
+   /*
+   
+    background: -webkit-linear-gradient(70deg, #fff810  30%, rgba(0, 0, 0, 0) 30%), -webkit-linear-gradient(30deg, #63e89e 60%, #ff7ee3 60%);
+    background: -o-linear-gradient(70deg, #fff810  30%, rgba(0, 0, 0, 0) 30%), -o-linear-gradient(30deg, #63e89e 60%, #ff7ee3 60%);
+    background: -moz-linear-gradient(70deg, #fff810  30%, rgba(0, 0, 0, 0) 30%), -moz-linear-gradient(30deg, #63e89e 60%, #ff7ee3 60%);
+    background: linear-gradient(70deg, #fff810  30%, rgba(0, 0, 0, 0) 30%), linear-gradient(30deg, #63e89e 60%, #ff7ee3 60%);
+    
+        background: -webkit-linear-gradient(110deg, #a60af3 40%, rgba(0, 0, 0, 0) 40%) no-repeat center center fixed, -webkit-radial-gradient(farthest-corner at 0% 0%, #7a00cc 70%, #c03fff 70%) no-repeat center center fixed;
+    background: -o-linear-gradient(110deg, #a60af3 40%, rgba(0, 0, 0, 0) 40%) no-repeat center center fixed, -o-radial-gradient(farthest-corner at 0% 0%, #7a00cc 70%, #c03fff 70%) no-repeat center center fixed;
+    background: -moz-linear-gradient(110deg, #a60af3 40%, rgba(0, 0, 0, 0) 40%) no-repeat center center fixed, -moz-radial-gradient(farthest-corner at 0% 0%, #7a00cc 70%, #c03fff 70%) no-repeat center center fixed;
+    background: linear-gradient(110deg, #a60af3 40%, rgba(0, 0, 0, 0) 40%) no-repeat center center fixed, radial-gradient(farthest-corner at 0% 0%, #7a00cc 70%, #c03fff 70%) no-repeat center center fixed;
+    
+    */
+    
+    
+    color: #fff;
+    background: -webkit-radial-gradient(farthest-corner at 100% 0%, #a60af3 40%, rgba(0, 0, 0, 0) 40%) no-repeat center center fixed, -webkit-radial-gradient(farthest-corner at 0% 0%, #7a00cc 70%, #c03fff 70%) no-repeat center center fixed;
+    background: -o-radial-gradient(farthest-corner at 100% 0%, #a60af3 40%, rgba(0, 0, 0, 0) 40%) no-repeat center center fixed, -o-radial-gradient(farthest-corner at 0% 0%, #7a00cc 70%, #c03fff 70%) no-repeat center center fixed;
+    background: -moz-radial-gradient(farthest-corner at 100% 0%, #a60af3 40%, rgba(0, 0, 0, 0) 40%) no-repeat center center fixed, -moz-radial-gradient(farthest-corner at 0% 0%, #7a00cc 70%, #c03fff 70%) no-repeat center center fixed;
+    background: linear-gradient(to bottom, #e1deff 65px, rgba(0, 0, 0, 0) 60px), radial-gradient(farthest-corner at 80% 0%, #FFD933 40%, rgba(0, 0, 0, 0) 40%) no-repeat center center fixed, radial-gradient(farthest-corner at 20% 45%, #FFCF00 60%, #edc100 60%) no-repeat center center fixed;
+    
+     -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  
+  background-repeat: no-repeat;
+
+}
+
+
+
+.head {
+  
+  
+  display: inline;
+  margin-left: 20%;
+  font-family: Georgia;
+  color: #4a3232;
+  font-size: 40px;
+  
+  
+}
+
+
+.card-holder {
+  margin: 2em 0;
+}
+
+.bg-spring {
+  /*
+    background: -webkit-linear-gradient(70deg, #fff810  30%, rgba(0,0,0,0) 30%), -webkit-linear-gradient(30deg, #63e89e 60%, #ff7ee3 60%);
+    background: -o-linear-gradient(70deg, #fff810  30%, rgba(0,0,0,0) 30%), -o-linear-gradient(30deg, #63e89e 60%, #ff7ee3 60%);
+    background: -moz-linear-gradient(70deg, #fff810  30%, rgba(0,0,0,0) 30%), -moz-linear-gradient(30deg, #63e89e 60%, #ff7ee3 60%);
+    background: linear-gradient(70deg, #fff810  30%, rgba(0,0,0,0) 30%), linear-gradient(30deg, #63e89e 60%, #ff7ee3 60%);
+    
+    
+        color: #fff;
+    background: -webkit-linear-gradient(-70deg, #fa7c30 30%, rgba(0, 0, 0, 0) 30%), url('https://www.nasa.gov/sites/default/files/thumbnails/image/pia21421-cr.jpg');
+    background: -o-linear-gradient(-70deg, #fa7c30 30%, rgba(0, 0, 0, 0) 30%), url('https://www.nasa.gov/sites/default/files/thumbnails/image/pia21421-cr.jpg');
+    background: -moz-linear-gradient(-70deg, #fa7c30 30%, rgba(0, 0, 0, 0) 30%), url('https://www.nasa.gov/sites/default/files/thumbnails/image/pia21421-cr.jpg');
+    background: linear-gradient(-70deg, #fa7c30 30%, rgba(0, 0, 0, 0) 30%), url('https://www.nasa.gov/sites/default/files/thumbnails/image/pia21421-cr.jpg');
+  background-size: cover;
+  background-position: 50% 11%;
+  text-align: right;
+  
+  */
+}
+
+.card {
+  font-family: -apple-system, BlinkMacSystemFont, 'Open Sans', sans-serif;
+  font-size: 3em;
+  font-weight: 800;
+  height: 4em;
+  width: 64em;
+  padding: 0.5em 1em;
+  border-radius: 0.25em;
+  display: table-cell;
+  vertical-align: middle;
+  letter-spacing: -2px;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0);
+}
+
+.card .subtle {
+  color: #000;
+  font-size: 0.5em;
+  font-weight: 400;
+  letter-spacing: -1px;
+}
+
+.timage {
+  
+  background: transparent;
+  
+}
+
+.content {
+  
+  font-size: 20px;
+  
+  margin-left: 20%;
+  margin-right: 20%;
+
+  
+  
+  
+}
+
+.content1 {
+  
+  margin-top: 60px;
+  color: #f0bc00;
+  
+    word-spacing: 1px;
+  line-height: 1.2;
+  
+}
+
+.content2 {
+  
+  color: #0030FF;
+  margin-top: 60px;
+  font-size: 60px;
+  
+  
+}
+
+.content3 {
+  
+  word-spacing: 1px;
+  line-height: 1.2;
+  margin-top: 10px;
+  color: #4a3232;
+  
+}
+
+.marg{
+  margin-left: 50%;
+}
+
+.margg {
+  
+  margin-left: 10%;
+  
+}
+
+
+.myButton {
+	background-color: transparent;
+  margin-top: 60px;
+  margin-bottom: 30px;
+	border: 1px solid #001675;
+	display: inline-block;
+	cursor: pointer;
+	color: #001675;
+	font-family: Arial;
+	font-size: 18px;
+	padding: 14px 30px;
+	text-decoration: none;
+	text-shadow: 0px 1px 0px #ded17c;
+  transition-duration: 0.2s;
+  
+  
+}
+.myButton:hover {
+  transition-duration: 0.2s;
+	background-color: #001675;
+  color: white;
+}
+.myButton:active {
+	position: relative;
+	top: 1px;
+}
+
+.topButton {
+  background-color: transparent;
+	border: 0px solid #e65f44;
+	display: inline-block;
+	cursor: pointer;
+	color: #000000;
+	font-family: Georgia;
+	font-size: 18px;
+	padding: 14px 30px;
+	text-decoration: none;
+  float: right;
+
+  transition-duration: 0.4s;
+  transition-delay: 0.11s;
+  
+/*	background-color: transparent;
+	display: inline-block;
+	cursor: pointer;
+	color: #000000;
+	font-family: Georgia;
+	font-size: 17px;
+	padding: 16px 31px;
+	text-decoration: none; */
+	
+}
+
+.topButton:hover {
+  
+  transition-delay: 0s;
+  transition-duration: 0.6s;
+	background-color: #4a3232;
+  color: #e0d5d5;
+  
+}
+
+.margin {
+  
+  margin-right: 20%;
+  
+}
+
+.contact {
+  
+  
+  margin-left: 35%;
+  margin-right: 20%;
+  text-align: center;
+  
+  font-family: Arial;
+  
+  display: none;
+  
+}
+
+    #star-five {
+      margin: 50px 0;
+      position: relative;
+      display: block;
+      color: red;
+      width: 0px;
+      height: 0px;
+      border-right: 100px solid transparent;
+      border-bottom: 70px solid red;
+      border-left: 100px solid transparent;
+      transform: rotate(35deg);
+    }
+        #star-five:before {
+      border-bottom: 80px solid red;
+      border-left: 30px solid transparent;
+      border-right: 30px solid transparent;
+      position: absolute;
+      height: 0;
+      width: 0;
+      top: -45px;
+      left: -65px;
+      content: '';
+      display: block;
+      transform: rotate(-35deg);
+    }
+
+        #star-five:after {
+      position: absolute;
+      display: block;
+      color: red;
+      top: 3px;
+      left: -105px;
+      width: 0px;
+      height: 0px;
+      border-right: 100px solid transparent;
+      border-bottom: 70px solid red;
+      border-left: 100px solid transparent;
+      transform: rotate(-70deg);
+      content: '';
+    }
+
+
+</style>
